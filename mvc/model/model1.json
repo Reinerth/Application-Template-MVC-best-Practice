@@ -1,0 +1,9 @@
+{
+    "someModelProperty": {
+        "title": "example title",
+        "otherProperty": {
+            "title": "some title",
+            "list": [0,1,2,3]
+        }
+    }
+}

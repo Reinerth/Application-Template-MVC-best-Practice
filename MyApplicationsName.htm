@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application template | module- and MVC-pattern</title>
+</head>
+
+<body>
+    <!-- 
+        The story in spoken words:
+
+        Involved are 5 files:
+        1. MyApplicationsName.htm
+        2. mvc/model/MyApplicationsName.js
+        3. mvc/model/model1.json
+        4. mvc/controller/FirstClass.js
+        5. mvc/controller/SecondClass.js
+
+        This set of 5 files, represent a template 
+        with best practices for setting up an application from the scratch. 
+        The given structure follows the MVC-pattern (Model-View-Controller)
+        and the module-pattern.
+
+        The MODEL:
+        the center of the "model"-part, is the file "mvc/model/MyApplicationsName.js",
+        where all the needed configurations/settings of the application
+        and the retrieved JSON-files should be placed.
+
+        The VIEW:
+        the center of the "view"-part, is the DOM in this "MyApplicationsName.htm"-file
+        and would be additionaly the CSS-files (here not included)
+
+        The CONTROLLER:
+        the "controller"-part are the rest of the files:
+        "mvc/controller/FirstClass.js" and "mvc/controller/SecondClass.js"
+        and all other classes which would be added as needed.
+        Note: Every class is a file, is a module.
+    -->
+
+    <!-- The DOM-elements (plus CSS and IMG) represent the VIEW -->
+    <div id="someContent"></div>
+
+
+    <!-- The Center for Configuration and Model (JSONs) must be included first. -->
+    <script src="mvc/model/MyApplicationsName.js?since=202309150721&svnrevision=121"></script>
+
+    <!-- The Classes / Modules. The order of inclusion doesnt matter. -->
+    <script src="mvc/controller/FirstClass.js?since=202309150721&svnrevision=121"></script>
+    <script src="mvc/controller/SecondClass.js?since=202309150721&svnrevision=121"></script>
+
+    <script>
+        /**
+         * CONFIGURE the application (the settings are in MyApplicationsName.js)
+        */
+        window.MyApplicationsName.someConfig = "ABC";
+        window.MyApplicationsName.language = "Esperanto";
+
+        /**
+         * SETTINGS are always accessible (the settings are in MyApplicationsName.js)
+        */
+        console.log(window.MyApplicationsName.version);
+        console.log(window.MyApplicationsName.mainURL);
+
+        /**
+         * INVOKE public functions from the classes of the application.
+        */
+        myFC.FirstClassPublic();
+        mySC.init();
+
+        /**
+         * In the WINDOW-object we can see our application ("MyApplicationsName").
+        */
+        console.log("window.MyApplicationsName");
+        console.log(window);
+    </script>
+</body>
+
+
+
+</html>

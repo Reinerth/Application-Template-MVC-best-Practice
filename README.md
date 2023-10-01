@@ -1,6 +1,10 @@
 # Application-Template-MVC-best-Practice :mountain_snow:  :compass:  :anchor:  :gear:
 This set of 5 files, represent a template with best practices for setting up a big JS-application from the scratch. The given structure follow the MVC-pattern (Model-View-Controller) and the module-pattern.
 
+
+![mvc](https://github.com/Reinerth/Application-Template-MVC-best-Practice/assets/85163640/3a297aa7-3585-4874-9b1f-9781fbdc0fac)
+
+
 This is what it looks like: 
 
 

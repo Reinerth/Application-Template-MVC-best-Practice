@@ -1,3 +1,4 @@
+
 'use strict'; /* Used traditional syntax and ES5, except "let". */
 
 
@@ -24,9 +25,12 @@ window.MyApplicationsName.FirstClass = function (){
 };
 
 
+
+
 /****************************************************************
  * INSTANTIATE (new) a Variable (e.g. "myFC")                   *
  * with the class from this file ("FirstClass")                 *
  * to make the class available to be invoked (in the "view.htm")*
 ****************************************************************/
 let myFC = new window.MyApplicationsName.FirstClass();
+

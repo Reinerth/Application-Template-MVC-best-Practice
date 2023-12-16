@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
 </head>
 
 <body>
+
     <!-- 
         The story in spoken words:
 
@@ -42,12 +44,14 @@
     <div id="someContent"></div>
 
 
-    <!-- The Center for Configuration and Model (JSONs) must be included first. -->
+
+    <!-- The CENTER for Configuration and Model (JSONs) must be included first. -->
     <script src="mvc/model/MyApplicationsName.js?since=202309150721&svnrevision=121"></script>
 
     <!-- The Classes / Modules. The order of inclusion doesnt matter. -->
     <script src="mvc/controller/FirstClass.js?since=202309150721&svnrevision=121"></script>
     <script src="mvc/controller/SecondClass.js?since=202309150721&svnrevision=121"></script>
+
 
     <script>
         /**
@@ -56,11 +60,13 @@
         window.MyApplicationsName.someConfig = "ABC";
         window.MyApplicationsName.language = "Esperanto";
 
+
         /**
          * SETTINGS are always accessible (the settings are in MyApplicationsName.js)
         */
         console.log(window.MyApplicationsName.version);
         console.log(window.MyApplicationsName.mainURL);
+
 
         /**
          * INVOKE public functions from the classes of the application.
@@ -68,14 +74,23 @@
         myFC.FirstClassPublic();
         mySC.init();
 
+
         /**
          * In the WINDOW-object we can see our application ("MyApplicationsName").
         */
         console.log("window.MyApplicationsName");
-        console.log(window);
+        console.log(window.MyApplicationsName);
+
     </script>
+
 </body>
 
-
-
 </html>
+
+
+
+
+
+
+
+

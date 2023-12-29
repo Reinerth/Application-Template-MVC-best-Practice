@@ -1,6 +1,10 @@
 # Application-Template-MVC-best-Practice :mountain_snow:  :compass:  :anchor:  :gear:
-This set of 5 files, represent a template with best practices for setting up a big JS-application from the scratch. The given structure follow the MVC-pattern (Model-View-Controller) and the module-pattern.
-
+This set of 5 files, represent a template with best practices for setting up a big JS-application from the scratch. 
+<br>
+The given structure follow the MVC-pattern (Model-View-Controller) and the module-pattern.
+<br>
+(Works in IIS too)
+<br>
 
 ![mvc](https://github.com/Reinerth/Application-Template-MVC-best-Practice/assets/85163640/3a297aa7-3585-4874-9b1f-9781fbdc0fac)
 
@@ -16,7 +20,7 @@ This set of 5 files, represent a template with best practices for setting up a b
 
 <br><br><br><br>
 ### The MODEL<br>
-The CENTRAL of the Model (and the application - The entire content of the application will be routed through this file)<br>
+The CENTRAL of the Model and the application - The entire content of the application will be routed through this file<br>
 ![MyApplicationsName-js](https://github.com/Reinerth/Application-Template-MVC-best-Practice/assets/85163640/ff1130e1-32eb-4dac-a173-a6539ccf1e37)
 
 ...and a simple JSON-file<br>

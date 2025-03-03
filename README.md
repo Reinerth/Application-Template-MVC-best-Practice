@@ -2,8 +2,7 @@
 This set of 5 files, represent a template with best practices for setting up a big JS-application from the scratch. 
 <br>
 The given structure follow the MVC-pattern (Model-View-Controller) and the module-pattern.
-<br>
-(Works in IIS too)
+<br> Web-server needed. (Works in IIS too)
 <br>
 
 ![mvc](https://github.com/Reinerth/Application-Template-MVC-best-Practice/assets/85163640/3a297aa7-3585-4874-9b1f-9781fbdc0fac)

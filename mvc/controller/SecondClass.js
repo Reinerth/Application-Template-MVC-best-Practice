@@ -18,9 +18,9 @@ window.MyApplicationsName.SecondClass = function (){
 
     // Common settings needed inside this class
     let internalSettings = {
-        myURLSomewhere: "./mvc/controller/myFile.php?since=202312161200&svnrevision=002",
+        myURLSomewhere: "./mvc/controller/myFile.php?param1=myValueA&param2=myValueB",
         myURLToModel1: "./mvc/model/model1.json?since=202312161200&svnrevision=002",
-        someParameter: "1"
+        param1: "myValueA"
     };
 
     // Private
@@ -49,21 +49,23 @@ window.MyApplicationsName.SecondClass = function (){
         SecondClassPrivate();
 
         /**
-         * Get the model-content (JSON-file) with "makeAJAXRequest"
-         * and when load is finished, do something with the retrieved content 
-         * inside the callback-function "myCallbackOnJSONLoad1" ("callMeWhenReady")
+         * Get the models-content (a JSON-file) with the function "makeAJAXRequest"
+         * and when load is finished, do something with the retrieved content "responseContent"
+         * inside the callback-function from line 34 "myCallbackOnJSONLoad1" ("callMeWhenReady")
          * 
-         * internalSettings.myURLToModel1 -> parameter 1 -> the URL
-         * internalSettings.someParameter -> parameter 2 -> 
-         *                      an example paramter (e.g. in case of php requests)
-         *                      not needed here
+         * Not easy to read this 3 lines: 
+         * The function "makeAJAXRequest" has 3 parameters: 
+         * the first one, is an anonymous function, which invokes the callback-function "myCallbackOnJSONLoad1",
+         * the second parameter, is the URL to the file requested "myURLToModel1",
+         * and the third paramter, "param1" is not needed here, 
+         * but added as an example, on how to append paramters e.g. at a requested php-file  
          **/
         window.MyApplicationsName.makeAJAXRequest(function(responseContent) {
 
             // On callback ready, we do something with the response.
             myCallbackOnJSONLoad1(responseContent);
 
-        }, internalSettings.myURLToModel1, internalSettings.someParameter);
+        }, internalSettings.myURLToModel1, internalSettings.param1);
     };
 };
 

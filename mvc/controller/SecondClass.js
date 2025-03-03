@@ -18,7 +18,7 @@ window.MyApplicationsName.SecondClass = function (){
 
     // Common settings needed inside this class
     let internalSettings = {
-        myURLSomewhere: "./mvc/controller/myFile.php?param1=myValueA&param2=myValueB",
+        myURLSomewhere: "./mvc/controller/myFile.php",
         myURLToModel1: "./mvc/model/model1.json?since=202312161200&svnrevision=002",
         param1: "myValueA"
     };

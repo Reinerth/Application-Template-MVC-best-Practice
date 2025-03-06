@@ -16,34 +16,40 @@
 */
 window.MyApplicationsName.SecondClass = function (){
 
-    // Common settings needed inside this class
+
+    // Common settings needed inside this class (can only be accessed from this class)
     let internalSettings = {
-        myURLSomewhere: "./mvc/controller/myFile.php",
-        myURLToModel1: "./mvc/model/model1.json?since=202312161200&svnrevision=002",
-        param1: "myValueA"
+        myURLSomewhere: "./mvc/controller/my-example-php-file.php",
+        myURLToModel1: "./mvc/model/model1.json",
+        aDOMContainer: document.getElementById("someContent"),
+        param1: "one",
+        param2: "two"
     };
 
-    // Private
+
+    // Private (can only be accessed from this class)
     let SecondClassPrivate = function(){
-        console.log("2 SecondClass Private");
-        // Invoke a public function from ANOTHER class
-        myFC.FirstClassPublic();
+        console.log("Executed in SecondClass Private");
     };
 
-    // Private
-    let myCallbackOnJSONLoad1 = function(responseContent){
 
-        // Display the model-content retrieved via JSON in the "view.htm" (DOM)
-        let getDOMContainer = document.getElementById("someContent");
-        getDOMContainer.innerHTML = JSON.stringify(responseContent);
+    // Private (can only be accessed from this class)
+    let myCallbackOnJSONLoaded = function(responseContent){
 
-        // We put the JSON-content to the model-central to have access on it applicationwide
-        window.MyApplicationsName.retrievedJSONContent = JSON.parse(responseContent);
-    }
+        // If we retrieve database-content, 
+        // we should put it directly to the MODEL-CENTER 
+        // to have access on it from everywhere (applicationwide), 
+        // and from there we take the values to continue with them
+        window.MyApplicationsName.retrievedJSONContent1 = JSON.parse(responseContent);
+
+        // Do something with the values (model-content) ...
+        // ... display them in the "view.htm" (DOM)
+        internalSettings.aDOMContainer.innerHTML = JSON.stringify(window.MyApplicationsName.retrievedJSONContent1);
+    };
 
 
-    // Public
-    this.init = function(){
+    // Public (can be accessed from other classes)
+    this.SecondClassPublic = function(){
 
         // Private functions can only be used or invoked inside the class.
         SecondClassPrivate();
@@ -51,34 +57,38 @@ window.MyApplicationsName.SecondClass = function (){
         /**
          * Get the models-content (a JSON-file) with the function "makeAJAXRequest"
          * and when load is finished, do something with the retrieved content "responseContent"
-         * inside the callback-function from line 34 "myCallbackOnJSONLoad1" ("callMeWhenReady")
+         * inside the callback-function from line 37 "myCallbackOnJSONLoaded" ("callMeWhenReady")
          * 
          * Not easy to read this 3 lines: 
-         * The function "makeAJAXRequest" has 3 parameters: 
-         * the first one, is an anonymous function, which invokes the callback-function "myCallbackOnJSONLoad1",
-         * the second parameter, is the URL to the file requested "myURLToModel1",
-         * and the third paramter, "param1" is not needed here, 
-         * but added as an example, on how to append paramters e.g. at a requested php-file  
+         * The function "makeAJAXRequest" has 4 parameters: 
+         * the first one, is an anonymous function, to pass the "responseContent" to the callback, 
+         * and invoke the callback-function "myCallbackOnJSONLoaded",
+         * the second parameter, is the URL to the file requested, "myURLSomewhere",
+         * and finally the third and fourth paramter, "param1" and "param2"
+         * added optional as an example, on how to append paramters at a requested php-file  
+         * 
+         * The simple one-liner-notation with a callback-function 
+         * where you dont need to pass the retrieved content, would look like this:
+         * window.MyApplicationsName.makeAJAXRequest(myCallbackFunctionsName, myURL, URLparameter1, URLparameter2);
+         * 
+         * or without parameters for a simple JSON-file like this:
+         * window.MyApplicationsName.makeAJAXRequest(myCallbackFunctionsName, myURL);
          **/
         window.MyApplicationsName.makeAJAXRequest(function(responseContent) {
 
             // On callback ready, we do something with the response.
-            myCallbackOnJSONLoad1(responseContent);
+            myCallbackOnJSONLoaded(responseContent);
 
-        }, internalSettings.myURLToModel1, internalSettings.param1);
+        }, internalSettings.myURLSomewhere, internalSettings.param1, internalSettings.param2);
     };
 };
 
 
 
+
 /****************************************************************
- * INSTANTIATE (new) a variable (e.g. "mySC")                   *
+ * INSTANTIATE (new) a variable (e.g. "mySecC")                 *
  * with the class from this file ("SecondClass")                *
  * to make the class available to be invoked (in the "view.htm")*
 ****************************************************************/
-let mySC = new window.MyApplicationsName.SecondClass();
-
-
-
-
-
+let mySecC = new window.MyApplicationsName.SecondClass();

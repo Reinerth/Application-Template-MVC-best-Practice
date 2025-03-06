@@ -1,3 +1,4 @@
+
 'use strict'; /* Used traditional syntax and ES5, except "let". */
 
 /** Here is the BEGINNING (the entry-point to the Application):
@@ -15,13 +16,14 @@ window.MyApplicationsName = {
     "version"               :"1.0",
     "language"              :"en",
     "someConfig"            :"something",
-    "retrievedJSONContent"  :"", 
+    "retrievedJSONContent1" :"", 
+    "retrievedJSONContent2" :"", 
     "mainURL"               :"https://someExample.com",
 
     /** This function "makeAJAXRequest" 
      * can be used for AJAX-requests without or with parammeters
      * e.g. for json- or php-files. See how to use in "SecondClass.js"
-     * @param {string} callMeWhenReady - The name of the callbackfunction from the class
+     * @param {string} callMeWhenReady - The substitute-name of the callbackfunction from the class
      * @param {string} url - The request-url
      * @param {string} param1 - Optional parameter
      * @param {string} param2 - Optional parameter
@@ -30,11 +32,27 @@ window.MyApplicationsName = {
     "makeAJAXRequest"  :function(callMeWhenReady, url, param1, param2, param3){
 
         let AJAXRequest = new XMLHttpRequest();
+
+        // GET is simpler and faster than POST, and can be used in most cases.
+        let method = "GET"; // POST or GET
+
+        // However, always use POST requests when:
+
+        // a) Sending user input with sensitive data 
+        //    or which can contain unknown characters (read about XSS), 
+        //    POST is more robust and secure than GET.
+        // b) Sending a large amount of data to the server (POST has no size limitations).
+
+        // Additional note: 
+        // Be aware: if making a Server-request via POST, 
+        // the application does not run in IIS.
+        // IIS-server does not accept POST-Requests. 
+
         let parameters = "";
 
         // In case that the request has parameters, we add them
         if (typeof param1 != 'undefined' && param1 != null && param1 != ""){
-            parameters = parameters + "&param1=" + param1;
+            parameters = parameters + "param1=" + param1;
         }
         if (typeof param2 != 'undefined' && param2 != null && param2 != ""){
             parameters = parameters + "&param2=" + param2;
@@ -43,9 +61,17 @@ window.MyApplicationsName = {
             parameters = parameters + "&param3=" + param3;
         }
 
-        AJAXRequest.open("GET", url, true);
-        AJAXRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        AJAXRequest.send(parameters);
+        if (method == "GET"){
+            parameters = "?" + parameters; // attaching first parameter in URL needs the questionmark
+            url = url+parameters;
+            AJAXRequest.open(method, url, true);
+            AJAXRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            AJAXRequest.send();
+        } else { // POST
+            AJAXRequest.open(method, url, true);
+            AJAXRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            AJAXRequest.send(parameters);
+        }
 
         AJAXRequest.onreadystatechange = function() {
 

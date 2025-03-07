@@ -12,6 +12,11 @@ Could be easily removed if in SecondClass.js in line 82
 the first parameter "myURLSomewhere" gets changed to "myURLToModel1" (from line 23).
 <br><br>
 
+The module-pattern alone, explained in a single file, <br>
+without the MVC-structure, you could find here: <br>
+https://github.com/Reinerth/JS_modulePattern_ClassExample_private_public
+<br><br>
+
 ![mvc](https://github.com/Reinerth/Application-Template-MVC-best-Practice/assets/85163640/3a297aa7-3585-4874-9b1f-9781fbdc0fac)
 
 

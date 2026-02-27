@@ -10,7 +10,7 @@ PHP is NOT mandatory (is optional), and not part of the structure. (Only added a
 Could be easily removed if in SecondClass.js in line 82 
 <br>
 the first parameter "myURLSomewhere" gets changed to "myURLToModel1" (from line 23).
-<br><br>
+<br><br> 
 
 The module-pattern alone, explained in a single file, <br>
 without the MVC-structure, you could find here: <br>
